@@ -20,3 +20,8 @@
 在反转第一个子链表时，我们让start指向了第一个节点，在反转后，1节点成了节点的end，但是start一直跟着1节点，这就有了让start->next = next的一步；
 
 2. p->next操作只是更改了p所指节点指向哪，没有改变指针p所指位置
+
+盛水最多的矩形：
+这个里面维护栈单调，其实是在模拟计算矩形面积的过程，显示遍历完整个数组，并且在heights[i]严格小于heights[stack.top()]时，计算被弹出的栈可计算的面积；然后有可能遍历完数组heights后栈内还有元素，那么再加一个while循环来将栈弹空，同时计算矩形面积，注意当栈非空时，宽度=i-stack.top()-1;否则就是i或者heights.size()；
+
+3.设计循环的队列——使用大于队列大小1的数组，初始时front=rear，empty时front=rear，full时(rear+1)%capacity=front;同时明白了为什么要让返回队列中的最后一个值时，需要对rear处理成rear=(rear-1+capacity) % capacity了，因为如果rear到了数组的index=0的位置，我们让（rear-1）%capacity将是一个负数，无法正确取到数组的末尾的index位置，所以会用（rear-1+capacity）%capacity，结果正好维数组最后一个index位置！
